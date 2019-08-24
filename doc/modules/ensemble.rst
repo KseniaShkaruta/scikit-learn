@@ -390,9 +390,9 @@ learners::
     >>> from sklearn.datasets import load_iris
     >>> from sklearn.ensemble import AdaBoostClassifier
 
-    >>> iris = load_iris()
+    >>> X, y = load_iris(return_X_y = True)
     >>> clf = AdaBoostClassifier(n_estimators=100)
-    >>> scores = cross_val_score(clf, iris.data, iris.target, cv=5)
+    >>> scores = cross_val_score(clf, X, y, cv=5)
     >>> scores.mean()
     0.9...
 
@@ -1042,8 +1042,8 @@ The following example shows how to fit the majority rule classifier::
    >>> from sklearn.ensemble import RandomForestClassifier
    >>> from sklearn.ensemble import VotingClassifier
 
-   >>> iris = datasets.load_iris()
-   >>> X, y = iris.data[:, 1:3], iris.target
+   >>> X, y = datasets.load_iris(return_X_y = True)
+   >>> X = X[:, 1:3]
 
    >>> clf1 = LogisticRegression(random_state=1)
    >>> clf2 = RandomForestClassifier(n_estimators=50, random_state=1)
@@ -1103,9 +1103,9 @@ Vector Machine, a Decision Tree, and a K-nearest neighbor classifier::
    >>> from sklearn.ensemble import VotingClassifier
 
    >>> # Loading some example data
-   >>> iris = datasets.load_iris()
-   >>> X = iris.data[:, [0, 2]]
-   >>> y = iris.target
+   >>> X, y = datasets.load_iris(return_X_y = True)
+   >>> X = X[:, [0, 2]]
+
 
    >>> # Training classifiers
    >>> clf1 = DecisionTreeClassifier(max_depth=4)
@@ -1139,7 +1139,7 @@ to tune the hyperparameters of the individual estimators::
    >>> params = {'lr__C': [1.0, 100.0], 'rf__n_estimators': [20, 200]}
 
    >>> grid = GridSearchCV(estimator=eclf, param_grid=params, cv=5)
-   >>> grid = grid.fit(iris.data, iris.target)
+   >>> grid = grid.fit(X, y)
 
 Usage
 .....

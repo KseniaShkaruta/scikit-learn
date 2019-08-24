@@ -64,9 +64,9 @@ For multi-class classification, you need to set the class label for which
 the PDPs should be created via the ``target`` argument::
 
     >>> from sklearn.datasets import load_iris
-    >>> iris = load_iris()
+    >>> X, y = load_iris(return_X_y = True)
     >>> mc_clf = GradientBoostingClassifier(n_estimators=10,
-    ...     max_depth=1).fit(iris.data, iris.target)
+    ...     max_depth=1).fit(X, y)
     >>> features = [3, 2, (3, 2)]
     >>> plot_partial_dependence(mc_clf, X, features, target=0) #doctest: +SKIP
 

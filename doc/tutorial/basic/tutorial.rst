@@ -87,7 +87,7 @@ interpreter prompt::
 
   $ python
   >>> from sklearn import datasets
-  >>> iris = datasets.load_iris()
+  >>> X, y = datasets.load_iris(return_X_y = True)
   >>> digits = datasets.load_digits()
 
 A dataset is a dictionary-like object that holds all the data and some
@@ -214,8 +214,7 @@ persistence model, `pickle <https://docs.python.org/2/library/pickle.html>`_::
   >>> from sklearn import svm
   >>> from sklearn import datasets
   >>> clf = svm.SVC()
-  >>> iris = datasets.load_iris()
-  >>> X, y = iris.data, iris.target
+  >>> X, y = datasets.load_iris(return_X_y = True)
   >>> clf.fit(X, y)
   SVC()
 
@@ -284,18 +283,18 @@ maintained::
 
     >>> from sklearn import datasets
     >>> from sklearn.svm import SVC
-    >>> iris = datasets.load_iris()
+    >>> X, y = datasets.load_iris(return_X_y = True)
     >>> clf = SVC()
-    >>> clf.fit(iris.data, iris.target)
+    >>> clf.fit(X, y)
     SVC()
 
-    >>> list(clf.predict(iris.data[:3]))
+    >>> list(clf.predict(X[:3]))
     [0, 0, 0]
 
-    >>> clf.fit(iris.data, iris.target_names[iris.target])
+    >>> clf.fit(X, y_names[y])
     SVC()
 
-    >>> list(clf.predict(iris.data[:3]))
+    >>> list(clf.predict(X[:3]))
     ['setosa', 'setosa', 'setosa']
 
 Here, the first ``predict()`` returns an integer array, since ``iris.target``

@@ -1633,9 +1633,8 @@ Silhouette Coefficient for each sample.
   >>> from sklearn import metrics
   >>> from sklearn.metrics import pairwise_distances
   >>> from sklearn import datasets
-  >>> dataset = datasets.load_iris()
-  >>> X = dataset.data
-  >>> y = dataset.target
+  >>> X, y = datasets.load_iris(return_X_y = True)
+ 
 
 In normal usage, the Silhouette Coefficient is applied to the results of a
 cluster analysis.
@@ -1695,9 +1694,8 @@ sum of distances squared):
   >>> from sklearn import metrics
   >>> from sklearn.metrics import pairwise_distances
   >>> from sklearn import datasets
-  >>> dataset = datasets.load_iris()
-  >>> X = dataset.data
-  >>> y = dataset.target
+  >>> X, y = datasets.load_iris(return_X_y = True)
+ 
 
 In normal usage, the Calinski-Harabasz index is applied to the results of a
 cluster analysis:
@@ -1777,8 +1775,7 @@ In normal usage, the Davies-Bouldin index is applied to the results of a
 cluster analysis as follows:
 
   >>> from sklearn import datasets
-  >>> iris = datasets.load_iris()
-  >>> X = iris.data
+  >>> X, _ = datasets.load_iris(return_X_y = True)
   >>> from sklearn.cluster import KMeans
   >>> from sklearn.metrics import davies_bouldin_score
   >>> kmeans = KMeans(n_clusters=3, random_state=1).fit(X)
